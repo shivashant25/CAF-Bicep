@@ -3,11 +3,11 @@ targetScope = 'tenant'
 @description('Prefix for the management group hierarchy.  This management group will be created as part of the deployment.')
 @minLength(2)
 @maxLength(10)
-param parTopLevelManagementGroupPrefix string = 'alz'
+param parTopLevelManagementGroupPrefix string = 'eslz'
 
 @description('Display name for top level management group.  This name will be applied to the management group prefix defined in parTopLevelManagementGroupPrefix parameter.')
 @minLength(2)
-param parTopLevelManagementGroupDisplayName string = 'Azure Landing Zones'
+param parTopLevelManagementGroupDisplayName string = 'eslz'
 
 @description('Optional parent for Management Group hierarchy, used as intermediate root Management Group parent, if specified. If empty, default, will deploy beneath Tenant Root Management Group.')
 param parTopLevelManagementGroupParentId string = ''
@@ -27,37 +27,37 @@ param parTelemetryOptOut bool = false
 // Platform and Child Management Groups
 var varPlatformMg = {
   name: '${parTopLevelManagementGroupPrefix}-platform'
-  displayName: 'Platform'
+  displayName: 'eslz-platform'
 }
 
 var varPlatformManagementMg = {
   name: '${parTopLevelManagementGroupPrefix}-platform-management'
-  displayName: 'Management'
+  displayName: 'eslz-management'
 }
 
 var varPlatformConnectivityMg = {
   name: '${parTopLevelManagementGroupPrefix}-platform-connectivity'
-  displayName: 'Connectivity'
+  displayName: 'eslz-connectivity'
 }
 
 var varPlatformIdentityMg = {
   name: '${parTopLevelManagementGroupPrefix}-platform-identity'
-  displayName: 'Identity'
+  displayName: 'eslz-identity'
 }
 
 // Landing Zones & Child Management Groups
 var varLandingZoneMg = {
   name: '${parTopLevelManagementGroupPrefix}-landingzones'
-  displayName: 'Landing Zones'
+  displayName: 'eslz-landingzones'
 }
 
 // Used if parLandingZoneMgAlzDefaultsEnable == true
 var varLandingZoneMgChildrenAlzDefault = {
   corp: {
-    displayName: 'Corp'
+    displayName: 'eslz-Corp'
   }
   online: {
-    displayName: 'Online'
+    displayName: 'eslz-Online'
   }
 }
 
@@ -78,13 +78,13 @@ var varLandingZoneMgChildrenUnioned = (parLandingZoneMgAlzDefaultsEnable && parL
 // Sandbox Management Group
 var varSandboxMg = {
   name: '${parTopLevelManagementGroupPrefix}-sandbox'
-  displayName: 'Sandbox'
+  displayName: 'eslz-sandbox'
 }
 
 // Decomissioned Management Group
 var varDecommissionedMg = {
   name: '${parTopLevelManagementGroupPrefix}-decommissioned'
-  displayName: 'Decommissioned'
+  displayName: 'eslz-decommissioned'
 }
 
 // Customer Usage Attribution Id
